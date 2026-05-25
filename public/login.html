@@ -13,7 +13,7 @@
       <input type="password" id="password" placeholder="Mật khẩu" required>
       <button type="submit">Đăng nhập</button>
     </form>
-    <p>Chưa có tài khoản? <a href="#">Đăng ký</a></p>
+    <p>Chưa có tài khoản? <a href="#" id="register-link">Đăng ký</a></p>
   </div>
 
   <script>
@@ -32,6 +32,20 @@
         window.location.href = '/index.html';
       } else {
         alert('Sai tài khoản hoặc mật khẩu');
+      }
+    });
+
+    document.getElementById('register-link').addEventListener('click', async () => {
+      const username = prompt("Nhập tên đăng nhập:");
+      const password = prompt("Nhập mật khẩu:");
+      if(username && password){
+        const res = await fetch('/register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, password })
+        });
+        if(res.ok) alert("Đăng ký thành công, hãy đăng nhập!");
+        else alert("Đăng ký thất bại!");
       }
     });
   </script>
