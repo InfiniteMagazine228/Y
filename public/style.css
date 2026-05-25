@@ -1,0 +1,32 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+  margin: 0;
+}
+
+header {
+  background: #333;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+}
+
+#chat {
+  width: 400px;
+  margin: 20px auto;
+  background: #fff;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+#messages {
+  list-style: none;
+  padding: 0;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+#messages li {
+  padding: 5px;
+  border-bottom: 1px solid #ddd;
+}
