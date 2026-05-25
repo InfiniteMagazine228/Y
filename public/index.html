@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Mạng Xã Hội Chat</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Mạng Xã Hội Chat Mini</h1>
+  </header>
+
+  <main>
+    <div id="chat">
+      <ul id="messages"></ul>
+      <input id="m" autocomplete="off" placeholder="Nhập tin nhắn..." />
+      <button id="send">Gửi</button>
+    </div>
+  </main>
+
+  <!-- Socket.IO client -->
+  <script src="/socket.io/socket.io.js"></script>
+  <!-- JS riêng -->
+  <script src="client.js"></script>
+</body>
+</html>
