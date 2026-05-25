@@ -1,17 +1,27 @@
-const socket = io();
-const input = document.getElementById('m');
-const sendBtn = document.getElementById('send');
-const messages = document.getElementById('messages');
+import Pusher from "pusher-js";
 
-sendBtn.addEventListener('click', () => {
-  if (input.value.trim() !== '') {
-    socket.emit('chat message', input.value);
-    input.value = '';
+const pusher = new Pusher("YOUR_PUSHER_KEY", {
+  cluster: "ap1"
+});
+
+const channel = pusher.subscribe("chat-channel");
+const input = document.getElementById("m");
+const sendBtn = document.getElementById("send");
+const messages = document.getElementById("messages");
+
+sendBtn.addEventListener("click", async () => {
+  if (input.value.trim() !== "") {
+    await fetch("/api/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: input.value })
+    });
+    input.value = "";
   }
 });
 
-socket.on('chat message', (msg) => {
-  const li = document.createElement('li');
-  li.textContent = msg;
+channel.bind("new-message", (data) => {
+  const li = document.createElement("li");
+  li.textContent = data.text;
   messages.appendChild(li);
 });
