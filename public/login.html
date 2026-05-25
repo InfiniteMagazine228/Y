@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Đăng nhập MXH</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="login-box">
+    <h2>Đăng nhập</h2>
+    <form id="login-form">
+      <input type="text" id="username" placeholder="Tên đăng nhập" required>
+      <input type="password" id="password" placeholder="Mật khẩu" required>
+      <button type="submit">Đăng nhập</button>
+    </form>
+    <p>Chưa có tài khoản? <a href="#">Đăng ký</a></p>
+  </div>
+
+  <script>
+    document.getElementById('login-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      const res = await fetch('/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password })
+      });
+
+      if (res.ok) {
+        window.location.href = '/index.html';
+      } else {
+        alert('Sai tài khoản hoặc mật khẩu');
+      }
+    });
+  </script>
+</body>
+</html>
