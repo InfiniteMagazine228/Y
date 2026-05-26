@@ -2,9 +2,6 @@
   "name": "mxh-chat",
   "version": "1.0.0",
   "dependencies": {
-    "pusher": "^5.0.0",
-    "mongodb": "^6.0.0",
-    "bcrypt": "^5.1.0",
-    "body-parser": "^1.20.2"
+    "pusher": "^5.0.0"
   }
 }
